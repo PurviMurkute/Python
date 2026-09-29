@@ -1,14 +1,16 @@
 prices = [7,1,5,3,6,4]
 
 def maxProfit(prices):
-    maxP = 0
+    maximumProfit = 0
+    minPrice = prices[0]
 
-    for i in range(0, len(prices)):
-        for j in range(i+1, len(prices)):
-            if prices[j] > prices[i]:
-                profit = prices[j] - prices[i]
-                maxP = max(profit, maxP)
+    for i in range(len(prices)):
+        if prices[i] < minPrice:
+            minPrice = prices[i]
+        if prices[i] > minPrice:
+            profit = prices[i] - minPrice
+            maximumProfit = max(profit, maximumProfit)
 
-    return maxP
+    return maximumProfit
 
 print(maxProfit(prices))
