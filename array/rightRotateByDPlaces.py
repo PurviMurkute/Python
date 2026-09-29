@@ -3,9 +3,9 @@ list = [1, 2, 3, 4, 5]
 def right_rotate(arr, d):
     n = len(arr)
     d = d % n  # Handle cases where d is greater than n
-    temp = arr[0:-d]
-    for i in range(-d, n):
-        arr[d-i] = arr[i]
+    temp = arr[n-d:n]  # Store the last d elements
+    for i in range(d, n):
+        arr[i] = arr[i+d+1]
     for i in range(0, d):
         arr[i] = temp[i]
     return arr
